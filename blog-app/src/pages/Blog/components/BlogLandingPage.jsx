@@ -1,10 +1,11 @@
 import React from 'react'
+import BlogLayout from '../../../components/layouts/BlogLayout/BlogLayout'
 
 const BlogLandingPage = () => {
   return (
-    <div>
+    <BlogLayout>
       BlogLandingPage
-    </div>
+    </BlogLayout>
   )
 }
 

@@ -10,6 +10,8 @@ import BlogPosts from './pages/Admin/components/BlogPosts'
 import BlogPostEditor from './pages/Admin/components/BlogPostEditor'
 import Comments from './pages/Admin/components/Comments'
 import Dashboard from './pages/Admin/components/Dashboard'
+import PrivateRoute from './routes/PrivateRoute'
+
 
 const App = () => {
   return (
@@ -24,7 +26,7 @@ const App = () => {
 
         <Route path='/admin-login' element={<AdminLogin />} />
 
-        <Route>
+        <Route element={<PrivateRoute allowedRoles={["admin"]} />}>
           <Route path='/admin/dashboard' element={<Dashboard />}/>
           <Route path='/admin/posts' element={<BlogPosts />}/>
           <Route path='/admin/create' element={<BlogPostEditor />} />
@@ -37,8 +39,18 @@ const App = () => {
           <Route />
         </Route>
 
-        </Routes>
+
+          </Routes>
       </Router>
+      <Toaster 
+          toastOptions={{
+            className:"",
+            style:{
+              fontSize:"13px",
+              
+            },
+          }}
+          />
     </div>
   )
 }
