@@ -4,6 +4,7 @@ import {HiOutlineMenu,HiOutlineX} from "react-icons/hi"
 import {Link} from "react-router-dom"
 import {LuSearch} from "react-icons/lu"
 import {BLOG_NAVBAR_DATA} from '../../../utils/data'
+import SideMenu from '../SideMenu'
 
 const BlogNavbar = ({activeMenu}) => {
 
@@ -68,13 +69,13 @@ const BlogNavbar = ({activeMenu}) => {
                   Login/SignUp
                 </button>
 
+
+            </div>
                 {openSideMenu && (
                   <div className='fixed top-[61px] -ml-4 bg-white'> 
                     <SideMenu activeMenu={activeMenu} isBlogMenu/>
                   </div>
                 )}
-
-            </div>
       </div>
     </div>
   )
