@@ -68,6 +68,7 @@ const updatepost=async(req,res)=>{
 
 const deletePost=async(req,res)=>{
     try {
+        console.log('id=',req.params.id);
         const post=await BlogPost.findById(req.params.id);
         if(!post)
             return res.status(404).json({message:"Post not found"})
@@ -77,18 +78,23 @@ const deletePost=async(req,res)=>{
     } catch (error) {
             res.status(500)
             .json({message:"Internal server error",error:error.message})
-            console.log('error whlie updating post->',error);
+            console.log('error whlie deleting post->',error);
     }
     
 }
 
-const getPostBySlug=(req,res)=>{
+const getPostBySlug=async (req,res)=>{
 try {
-        
+        const post=await BlogPost.findOne({slug:req.params.slug});
+        if(!post){
+            return res.status(404).json({message:"post not found"})
+        }
+        return res.status(200).json(post);
+
     } catch (error) {
             res.status(500)
             .json({message:"Internal server error",error:error.message})
-            console.log('error whlie updating post->',error);
+            console.log('error whlie getting post by slug->',error);
     }
 
 }
@@ -138,9 +144,20 @@ const getAllPosts=async(req,res)=>{
     }
 }
 
-const getPostsByTag=(req,res)=>{
+const getPostsByTag=async (req,res)=>{
     try {
-        
+        const post=await BlogPost.find({
+            tags:req.params.tag,
+            isDraft:false,
+        }).populate("author","name profileImageUrl");
+
+        if(!post.length){
+            return res.status(400).json({
+                message:"no posts found by these tags"
+            })
+        }
+
+        return res.status(200).json(post)
     } catch (error) {
             res.status(500)
             .json({message:"Internal server error",error:error.message})
@@ -149,9 +166,23 @@ const getPostsByTag=(req,res)=>{
     
 }
 
-const searchPosts=(req,res)=>{
+const searchPosts=async (req,res)=>{
     try {
+            const q=req.query.q;
+            const posts=await BlogPost.find({
+                isDraft:false,
+                $or:[
+                    {title:{$regex:q,$options:"i" }},
+                    {content:{$regex:q,$options:"i"}}
+                ]
+            }).populate('author',"name profileImageUrl")
             
+            if(!posts && !posts.length){
+                return res.status(404).json({message:"no posts found"})
+            }
+
+            return res.status(200).json(posts)
+
         } catch (error) {
                 res.status(500)
                 .json({message:"Internal server error",error:error.message})
@@ -160,10 +191,11 @@ const searchPosts=(req,res)=>{
     
     }
 
-const incrementView=(req,res)=>{
+const incrementView=async (req,res)=>{
 
     try {
-        
+        await BlogPost.findByIdAndUpdate(req.params.id,{$inc: { views: 1}})
+        return res.json({message:"View Count incremented successfully"});
     } catch (error) {
             res.status(500)
             .json({message:"Internal server error",error:error.message})
@@ -172,10 +204,11 @@ const incrementView=(req,res)=>{
 
 }
 
-const likePost=(req,res)=>{
+const likePost=async (req,res)=>{
 
     try {
-        
+        await BlogPost.findByIdAndUpdate(req.params.id,{$inc: { likes: 1}})
+        return res.json({message:"like Count incremented successfully"});
     } catch (error) {
             res.status(500)
             .json({message:"Internal server error",error:error.message})
@@ -184,10 +217,14 @@ const likePost=(req,res)=>{
 
 }
 
-const getTopPosts=(req,res)=>{
+const getTopPosts=async (req,res)=>{
 
     try {
-        
+        const posts=await BlogPost.find({isDraft:false})
+                    .sort({views:-1,likes:-1})
+                    .limit(5);
+          
+        return res.json(posts);
     } catch (error) {
             res.status(500)
             .json({message:"Internal server error",error:error.message})
