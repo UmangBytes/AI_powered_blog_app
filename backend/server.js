@@ -29,10 +29,10 @@ app.use(express.json());
 
 app.use('/api/auth',authRoutes)
 app.use('/api/posts',blogPostRoutes)
-// app.use('/api/comments',dashboardRoutes)
-// app.use('/api/dashboard-summary',commentRoutes)
+app.use('/api/comments',commentRoutes)
+app.use('/api/dashboard-summary',dashboardRoutes)
 
-// app.use('/api/ai',aiRoutes);
+app.use('/api/ai',aiRoutes);
 
 app.use("/uploads",express.static(path.join(__dirname,"uploads"),{}))
 
