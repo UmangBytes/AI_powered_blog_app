@@ -11,10 +11,13 @@ import BlogPostEditor from './pages/Admin/components/BlogPostEditor'
 import Comments from './pages/Admin/components/Comments'
 import Dashboard from './pages/Admin/components/Dashboard'
 import PrivateRoute from './routes/PrivateRoute'
+import UserProvider from './context/userContext'
 
 
 const App = () => {
   return (
+    <UserProvider>
+
     <div className=''>
       <Router>
         <Routes>
@@ -52,6 +55,7 @@ const App = () => {
           }}
           />
     </div>
+</UserProvider>
   )
 }
 
