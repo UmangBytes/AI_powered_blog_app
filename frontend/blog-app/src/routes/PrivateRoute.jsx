@@ -3,9 +3,11 @@ import { useContext } from 'react'
 import { UserContext } from '../context/userContext'
 import { Navigate, Outlet } from 'react-router-dom'
 
-const PrivateRoute = () => {
+const PrivateRoute = ({allowedRoles}) => {
 
   const {user,loading}=useContext(UserContext)
+
+
 
   if(loading){
     return <div>Loading...</div>;

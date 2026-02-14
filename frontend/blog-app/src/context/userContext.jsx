@@ -54,6 +54,7 @@ const UserProvider=({children})=>{
         clearUser,
         openAuthForm,
         setOpenAuthForm,
+        setUser,
     }}>{children}</UserContext.Provider>
 }
 
