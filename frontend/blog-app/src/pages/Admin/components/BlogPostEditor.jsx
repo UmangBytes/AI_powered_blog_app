@@ -1,10 +1,17 @@
 import React from 'react'
+import DashboardLayout from '../../../components/layouts/DashboardLayout'
+import { useNavigate } from 'react-router-dom'
+
 
 const BlogPostEditor = () => {
+
+  const navigate=useNavigate();
+  const 
+
   return (
-    <div>
+    <DashboardLayout activeMenu="Blog Posts">
       BlogPostEditor
-    </div>
+    </DashboardLayout>
   )
 }
 

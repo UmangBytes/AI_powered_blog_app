@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Modal = ({
+    title,
     children,
     isOpen,
     onClose,
