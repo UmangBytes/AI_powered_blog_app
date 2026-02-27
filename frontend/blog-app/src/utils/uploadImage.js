@@ -16,7 +16,7 @@ const uploadImage=async (imageFile)=>{
 
         return response.data;
     } catch (error) {
-        
+        console.error('error while conevrting image to url,',error)
     }
 
 }

@@ -19,15 +19,15 @@ export const API_PATHS={
     AI:{
         GENERATE_BLOG_POST:'/api/ai/generate',
         GENERATE_BLOG_IDEAS:'/api/ai/generate-ideas',
-        GENERATE_BLOG_REPLY:'/api/ai/generate-reply',
-        GENERATE_BLOG_SUMMARY:'/api/ai/generate-summary'
+        GENERATE_COMMENT_REPLY:'/api/ai/generate-reply',
+        GENERATE_POST_SUMMARY:'/api/ai/generate-summary'
     },
 
     POSTS:{
         CREATE:'/api/posts',
         GET_ALL:'/api/posts',
-        GET_TRENDING_POSTS:'/api/posts',
-        GET_BY_SLUG:(slug)=>`/api/posts/${slug}`,
+        GET_TRENDING_POSTS:'/api/posts/trending',
+        GET_BY_SLUG:(slug)=>`/api/posts/slug/${slug}`,
         UPDATE:(id)=>`/api/posts/${id}`,
         DELETE:(id)=>`/api/posts/${id}`,
         GET_BY_TAG:(tag)=>`/api/posts/tag/${tag}`,

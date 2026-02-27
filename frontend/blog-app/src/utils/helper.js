@@ -19,3 +19,20 @@ export const  validateEmail=(email)=>{
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email)
 }
+
+export const getToastMessageByType=(type)=>{
+
+    switch(type){
+        case "edit":
+            return "Blog Post updated successfully!";
+        case "draft":
+            return "Blog post saved as draft successfully!";
+
+        case "published":
+            return "Blog post published successfully!";
+        
+        default:
+            return "Blog post published successfully!";
+    }
+
+}

@@ -85,7 +85,9 @@ const deletePost=async(req,res)=>{
 
 const getPostBySlug=async (req,res)=>{
 try {
+
         const post=await BlogPost.findOne({slug:req.params.slug});
+        
         if(!post){
             return res.status(404).json({message:"post not found"})
         }

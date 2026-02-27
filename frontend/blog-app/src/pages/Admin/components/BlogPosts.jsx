@@ -123,7 +123,7 @@ const BlogPosts = () => {
               tags={post.tags}
               likes={post.likes}
               views={post.views}
-              onClick={()=>navigate(`/admin/edit/${post._id}`)}
+              onClick={()=>navigate(`/admin/edit/${post.slug}`)}
               onDelete={()=>setOpenDeleteAlert({open:true,data:post._id})}
               />
             ))}

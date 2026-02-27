@@ -51,6 +51,7 @@ const UserProvider=({children})=>{
     return <UserContext.Provider value={{
         user,
         updateUser,
+        loading,
         clearUser,
         openAuthForm,
         setOpenAuthForm,
