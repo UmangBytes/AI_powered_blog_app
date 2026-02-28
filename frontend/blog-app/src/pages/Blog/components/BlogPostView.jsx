@@ -94,7 +94,12 @@ const BlogPostView = () => {
               }
 
             } catch (error) {
-              
+              setSummaryContent(null)
+              setErrorMsg("Failed to generate summary, Try again later")
+              console.error("Error:",error);
+               
+            }finally{
+              setIsLoading(false)
             }
    }
 
