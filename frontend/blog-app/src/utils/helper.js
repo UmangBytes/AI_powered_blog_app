@@ -36,3 +36,9 @@ export const getToastMessageByType=(type)=>{
     }
 
 }
+
+export const santizeMarkdown=(content)=>{
+        const markdownBlogRegx=/^```(?:markdown)?\n([\s\S]*?)\n```$/;
+        const match=content.match(markdownBlogRegx)
+        return match ?match[1]:content;
+}

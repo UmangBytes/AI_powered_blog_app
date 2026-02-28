@@ -20,7 +20,7 @@ export const API_PATHS={
         GENERATE_BLOG_POST:'/api/ai/generate',
         GENERATE_BLOG_IDEAS:'/api/ai/generate-ideas',
         GENERATE_COMMENT_REPLY:'/api/ai/generate-reply',
-        GENERATE_POST_SUMMARY:'/api/ai/generate-summary'
+        GENERATE_POST_SUMMARY:'/api/ai/generate-summary',
     },
 
     POSTS:{
@@ -31,7 +31,8 @@ export const API_PATHS={
         UPDATE:(id)=>`/api/posts/${id}`,
         DELETE:(id)=>`/api/posts/${id}`,
         GET_BY_TAG:(tag)=>`/api/posts/tag/${tag}`,
-        SEARCH:'/api/posts/search'
+        SEARCH:'/api/posts/search',
+        INCREMENT_VIEW:(id)=>`/api/posts/${id}/view`
     },
 
     COMMENTS:{

@@ -44,7 +44,11 @@ const getCommentsByPost=async (req,res)=>{
                 return res.status(400).json({message:"Invalid postId"})
             }
 
-            const comments=await Comment.find({post:postId});
+            const comments=await Comment.find({post:postId})
+                                            .populate("author","name profileImageUrl")
+                                            .populate("post","title coverImageUrl")
+                                            .sort({createdAt:1})
+
 
             const commentMap={};
             comments.forEach(comment=>{
@@ -80,6 +84,8 @@ const getAllComments=async (req,res)=>{
                             .populate("post","title coverImageUrl")
                             .sort({createdAt:1});
 
+            console.log('comments=',comments);      
+
             const commentMap={};
             comments.forEach(comment=>{
                 comment=comment.toObject();
@@ -98,6 +104,8 @@ const getAllComments=async (req,res)=>{
                     nestedComments.push(commentMap[comment._id]);
                 }
             })
+            
+            
 
             return res.status(200).json(nestedComments)
         } catch (error) {
