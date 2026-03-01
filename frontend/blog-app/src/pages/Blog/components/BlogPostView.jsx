@@ -20,6 +20,7 @@ import SharePost from './SharePost'
 import { santizeMarkdown } from '../../../utils/helper'
 import CommentInfoCard from './CommentInfoCard'
 import Drawer from '../../../components/Drawer'
+import LikeCommentButton from './LikeCommentButton'
 
 const BlogPostView = () => {
 
@@ -276,6 +277,12 @@ const BlogPostView = () => {
                   </div>
 
               </div>
+
+              <LikeCommentButton
+              postId={blogPostData._id || ""}
+              likes={blogPostData.likes || 0}
+              comments={comments?.length || 0}
+              />
             </div>
 
               <div className='col-span-12 md:col-span-4'>

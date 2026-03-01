@@ -171,6 +171,8 @@ const getPostsByTag=async (req,res)=>{
 const searchPosts=async (req,res)=>{
     try {
             const q=req.query.q;
+            console.log('q=',q);
+            
             const posts=await BlogPost.find({
                 isDraft:false,
                 $or:[

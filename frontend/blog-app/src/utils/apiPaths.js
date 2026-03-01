@@ -32,7 +32,8 @@ export const API_PATHS={
         DELETE:(id)=>`/api/posts/${id}`,
         GET_BY_TAG:(tag)=>`/api/posts/tag/${tag}`,
         SEARCH:'/api/posts/search',
-        INCREMENT_VIEW:(id)=>`/api/posts/${id}/view`
+        INCREMENT_VIEW:(id)=>`/api/posts/${id}/view`,
+        LIKE:(id)=>`/api/posts/${id}/like`
     },
 
     COMMENTS:{

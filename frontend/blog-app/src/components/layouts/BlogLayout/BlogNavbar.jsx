@@ -10,6 +10,7 @@ import ProfileInfoCard from '../../Cards/ProfileInfoCard'
 import SignUp from '../../auth/SignUp'
 import Login from '../../auth/Login'
 import Modal from '../../Modal'
+import SearchBarPopup from '../../../pages/Blog/components/SearchBarPopup'
 
 const BlogNavbar = ({activeMenu}) => {
 
@@ -95,6 +96,7 @@ const BlogNavbar = ({activeMenu}) => {
     </div>
 
     <AuthModel />
+    <SearchBarPopup isOpen={openSearchBar} setIsOpen={setOpenSearchBar} />
      </>
   )
 }
