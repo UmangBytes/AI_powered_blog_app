@@ -71,6 +71,7 @@ const SignUp = ({setCurrentPage}) => {
         if(role==='admin'){
           setOpenAuthForm(false)
           navigate('/admin/dashboard')
+          return ;
         }
 
         navigate('/')
@@ -135,13 +136,14 @@ const SignUp = ({setCurrentPage}) => {
 
         {error && <p className='text-red-500 text-xs pb-2.5'>{error}</p>}
 
-        <button type='submit' className='btn-primary' onClick={handleSignUp}>
+        <button type='submit' className='btn-primary'>
           SIGN UP
         </button>
 
         <p className='text-[13px] text-slate-800 mt-3'>
           Already have an account?{" "}
           <button
+          type='button'
           className='font-medium text-primary underline cursor-pointer'
           onClick={()=>{
             setCurrentPage("login")
