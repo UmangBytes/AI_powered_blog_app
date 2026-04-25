@@ -38,7 +38,7 @@ const SignUp = ({setCurrentPage}) => {
     }
 
     if(!validateEmail(email)){
-      setError("Please enter the password");
+      setError("Please enter the valid email");
       return ;
     }
 
@@ -135,7 +135,7 @@ const SignUp = ({setCurrentPage}) => {
 
         {error && <p className='text-red-500 text-xs pb-2.5'>{error}</p>}
 
-        <button type='submit' className='btn-primary'>
+        <button type='button' className='btn-primary'>
           SIGN UP
         </button>
 
