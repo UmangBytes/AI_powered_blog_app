@@ -16,13 +16,13 @@ const aiRoutes=require('./routes/aiRoutes.js')
 const app=express()
 app.use(express.json());
 
-app.use(
-    cors({
-        origin:"*",
-        // methods:["GET","POST","PUT","DELETE"],
-        allowedHeaders:["Content-Type","Authorization"],
-    })
-);
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://69ec4e4--ai-powered-blog-app.netlify.app',
+  ],
+  credentials: true
+}));
 
 connectDB();
 
