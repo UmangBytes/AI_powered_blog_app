@@ -28,7 +28,7 @@ app.use(cors({
 connectDB();
 
 const uploadPath=path.join(__dirname,"uploads");
-if(!fs.existsSync){
+if(!fs.existsSync(uploadPath)){
   fs.mkdirSync(uploadPath,{recursive:true});
 }
 
@@ -39,7 +39,8 @@ app.use('/api/dashboard-summary',dashboardRoutes)
 
 app.use('/api/ai',aiRoutes);
 
-app.use("/uploads",express.static(path.join(__dirname,"uploads"),{}))
+// app.use("/uploads",express.static(path.join(__dirname,"uploads"),{}))
+app.use("/uploads", express.static(uploadPath));
 
 const PORT=process.env.PORT || 5000;
 
