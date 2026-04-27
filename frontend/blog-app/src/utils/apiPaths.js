@@ -1,4 +1,4 @@
-export const BASE_URL='https://ai-powered-blog-app-backend.onrender.com';
+export const BASE_URL='https://ai-powered-blog-app-backendu.onrender.com';
 
 export const API_PATHS={
 
