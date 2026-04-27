@@ -125,8 +125,12 @@ const BlogPostEditor = ({isEdit}) => {
             return;
           }
           coverImageUrl=imageUploadRes.imageUrl;
+          console.log('imageUploadRes=',imageUploadRes);
+          console.log('coverImageUrl=',coverImageUrl);
+
         }else{
           coverImageUrl=postData.coverPreview
+          console.log('coverImageUrl=',coverImageUrl);
         }
 
         const rePayload={
