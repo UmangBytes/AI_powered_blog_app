@@ -119,7 +119,12 @@ const BlogPostEditor = ({isEdit}) => {
 
         if(postData.coverImageUrl instanceof File){
           const imageUploadRes=await uploadImage(postData.coverImageUrl);
-          coverImageUrl=imageUploadRes.imageUrl || "";
+          if(!imageUploadRes || !imageUploadRes.imageUrl){
+            setError("Failed to upload cover image.Please try again.")
+            setLoading(false);
+            return;
+          }
+          coverImageUrl=imageUploadRes.imageUrl;
         }else{
           coverImageUrl=postData.coverPreview
         }
