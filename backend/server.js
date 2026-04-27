@@ -4,8 +4,9 @@ require("dotenv").config({
 
 const express=require("express");
 const cors=require("cors");
-const path=require("path")
-const connectDB=require('./config/db.js')
+const path=require("path");
+const connectDB=require('./config/db.js');
+const fs=require("fs");
 
 const authRoutes=require('./routes/authRoutes.js')
 const blogPostRoutes=require('./routes/blogPostRoutes.js');
@@ -20,11 +21,16 @@ app.use(cors({
   origin: [
     'https://ai-powered-blog-app.netlify.app',
   ],
-  credentials: true
+  credentials: true,
+  allowedHeaders:["Content-Type","Authorization"]
 }));
 
 connectDB();
 
+const uploadPath=path.join(__dirname,"uploads");
+if(!fs.existsSync){
+  fs.mkdirSync(uploadPath,{recursive:true});
+}
 
 app.use('/api/auth',authRoutes)
 app.use('/api/posts',blogPostRoutes)

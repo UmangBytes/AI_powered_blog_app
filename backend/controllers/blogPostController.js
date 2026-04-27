@@ -6,6 +6,7 @@ const createPost=async(req,res)=>{
     try {
          const {title,content,coverImageUrl,tags,isDraft,generatedByAI}=req.body
 
+        //  coverImageUrl=`${req.protocol}://${req.get('host')}/uploads`
          const slug=title
          .toLowerCase()
          .replace(/ /g,"-")
